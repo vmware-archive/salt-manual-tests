@@ -1,6 +1,6 @@
 install-packages:
   module.run:
-    - name: pkg.installed
+    - name: pkg.install
     - pkgs:
       - Firefox
       - adobereader
