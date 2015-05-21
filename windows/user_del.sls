@@ -1,0 +1,2 @@
+saltdude:
+  user.absent
