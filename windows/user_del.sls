@@ -1,2 +1,3 @@
-saltdude:
-  user.absent
+del_dude:
+  user.absent:
+    - name: saltdude

@@ -1,3 +1,4 @@
-saltdude:
+add_dude:
   user.present:
-    - fullname: Salt Dude
+    - name: saltdude
+    - fullname: "Salt Dude"
