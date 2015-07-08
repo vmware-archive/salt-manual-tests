@@ -20,3 +20,5 @@ upgrade:
 remove:
   cmd.run:
     - name: 'salt-call --local pkg.remove htop'
+    - require: 
+      - cmd: install
