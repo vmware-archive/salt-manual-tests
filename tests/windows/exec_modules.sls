@@ -1,3 +1,24 @@
+# grains
+
+grains items:
+  module.run:
+    - name: grains.items
+
+# cmd
+
+cmd run:
+  module.run:
+    - name: cmd.run
+    - cmd: type c:\salt\conf\minion > nul
+
+# cp
+
+cp get url:
+  module.run:
+    - name: cp.get_url
+    - path: https://kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz
+    - dest: 'c:\\windows\\temp\\linux-4.1.tar.xz'
+
 # autoruns
 
 auto runs:
@@ -73,6 +94,36 @@ group delete:
     - name: group.delete
     - m_name: groupy
 
+# service
+
+stop salt minion:
+  module.run:
+    - name: service.stop
+    - m_name: salt-minion
+
+restart salt minion:
+  module.run:
+    - name: service.restart
+    - m_name: salt-minion
+    - require:
+      - module: stop salt minion
+
+stop print spooler:
+  module.run:
+    - name: service.stop
+    - m_name: Print Spooler
+
+restart print spooler:
+  module.run:
+    - name: service.restart
+    - m_name: Print Spooler
+    - require:
+      - module: stop print spooler
+
+service get service name:
+  module.run:
+    - name: service.get_service_name
+
 # network
 
 network netstat:
@@ -116,3 +167,9 @@ system get system time:
 system get system date:
   module.run:
     - name: system.get_system_date
+
+# packages
+
+pkg list pkgs:
+  module.run:
+    - name: pkg.list_pkgs
