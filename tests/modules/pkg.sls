@@ -1,4 +1,3 @@
-# Need to add logic to make sure the install happens before the remove.
 # maybe switch from cmd.run?
 
 install:
