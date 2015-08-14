@@ -1,3 +1,3 @@
 echo:
   cmd.run:
-    - name: "echo 'This is a test!'"
+    - name: "salt '*' cmd.run echo 'This is a test!'"
