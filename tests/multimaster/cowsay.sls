@@ -1,2 +1,3 @@
-cowsay:
-  pkg.installed
+install_cowsay:
+  pkg.installed:
+    - name: cowsay

@@ -4,6 +4,6 @@
   {% set vim = 'vim' %}
 {% endif %}
 
-vim_install:
+install_vim:
   pkg.installed:
     - name: {{ vim }}
