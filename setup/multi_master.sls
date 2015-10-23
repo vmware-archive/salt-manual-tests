@@ -7,7 +7,7 @@
 {% set role = salt ['pillar.get']('role', '') %}
 
 {% if role == 'minion' %}
-minion-config:
+minion_config:
   file.append:
     - name: /etc/salt/minion
     - text: |
@@ -15,7 +15,7 @@ minion-config:
           - {{ master1 }} 
           - {{ master2 }}
 
-minion-service:
+minion_service:
   service.running:
     - name: salt-minion
     - enable: True
@@ -30,7 +30,7 @@ minion-service:
     - makedirs: True
 {% endfor %}
 
-master-service:
+master_service:
   service.running:
     - name: salt-master
     - enable: True

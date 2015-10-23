@@ -1,6 +1,6 @@
 # Setup a regular master/minion environment. 1 cent7 master and 2 minions. 
 
-regular-env:
+regular_env:
   salt.state:
     - tgt: master1
     - sls:
