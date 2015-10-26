@@ -1,4 +1,5 @@
 {% set file = salt['pillar.get']('filename', 'default-test') %}
-touch /tmp/{{ file }}:
+create_file:
   cmd.run:
+    - name: touch /tmp/{{ file }}
     - creates: /tmp/foo
