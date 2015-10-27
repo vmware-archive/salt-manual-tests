@@ -4,12 +4,12 @@
   {% set dir_name = 'c:\\\salt\\config_dir' %}
 {% endif %}
 
-single-config:
+single_config:
   file.managed:
     - name: {{ file_name }}
     - source: salt://tests/files/main.cfg
 
-recursive-configs:
+recursive_configs:
   file.recurse:
     - name: {{ dir_name }}
     - source: salt://tests/files
