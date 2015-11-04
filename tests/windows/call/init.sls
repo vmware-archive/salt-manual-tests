@@ -11,3 +11,4 @@ create_file:
 replace_file:
   cmd.run:
     - name: '{{ salt_call }} --local file.replace {{ replace_file_name }} pattern="form" repl="for-all"'
+    - python_shell: True
