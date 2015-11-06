@@ -3,9 +3,13 @@
 {% set os_list = ['CentOS', 'Ubuntu'] %}
 
 match_cent:
-  cmd.run:
-    - name: "salt -G 'os:{{ os_list[0] }}' test.ping"
+  module.run:
+    - name: cmd.run
+    - cmd: salt -G 'os:{{ os_list[0] }}' test.ping
+    - python_shell: True
 
 match_ubu:
-  cmd.run:
-    - name: "salt -G 'os:{{ os_list[1] }}' test.ping"
+  module.run:
+    - name: cmd.run
+    - cmd: salt -G 'os:{{ os_list[1] }}' test.ping
+    - python_shell: True
