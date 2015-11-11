@@ -1,7 +1,7 @@
 include: 
-  - pip
-  - bottle
-  - proxy_conf
-  - roots
-  - git_setup
+  - proxy.pip
+  - proxy.bottle
+  - proxy.proxy_conf
+  - proxy.roots
+  - proxy.git_setup
 
