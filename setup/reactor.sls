@@ -2,7 +2,7 @@
 reactor_tmp:
   file.managed:
     - name: /srv/reactor/clean_tmp.sls
-    - source: ../reactor/clean_tmp.sls
+    - source: salt://reactor/clean_tmp.sls
     - makedirs: True
     - user: root
     - group: root
