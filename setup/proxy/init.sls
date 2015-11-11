@@ -1,5 +1,5 @@
 include: 
-  - setup.proxy.pip
+  - setup.proxy.install_pip
   - setup.proxy.bottle
   - setup.proxy.proxy_conf
   - setup.proxy.roots
