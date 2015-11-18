@@ -7,7 +7,9 @@
 
 * Copy `*.sls` files to `/srv/salt`
 * Unload and disable salt-minion from automatically starting
+
 ### Test
+
 * Start test
 
 ```salt-call --local state.highstate```
