@@ -1,13 +1,13 @@
-# Set up multi-master environment. Build 2 cent7 masters and 2 minions (1 cent6,
-# 1 ubuntu 14) do this with salt-cloud
-
+{# example of running this sls file using salt-ssh:  #}
+{# for master: sudo salt-ssh '*M*' state.sls m2m pillar="{'role': 'master'}" #}
+{# for minion: sudo salt-ssh '*min*' state.sls m2m pillar="{'m1': '1.1.1.1', 'm2':'2.2.2.2', 'role': 'minion'}" #}
 {% set master1 = salt['pillar.get']('m1', '')  %}                                                                  
 {% set master2 = salt['pillar.get']('m2', '')  %}
 {% set keyfiles = ['master.pem', 'master.pub'] %}
 {% set role = salt ['pillar.get']('role', '') %}
 
 {% if role == 'minion' %}
-minion_config:
+minion-config:
   file.append:
     - name: /etc/salt/minion
     - text: |
@@ -15,11 +15,13 @@ minion_config:
           - {{ master1 }} 
           - {{ master2 }}
 
-minion_service:
+minion-service:
   service.running:
     - name: salt-minion
     - enable: True
     - reload: True
+    - watch: 
+      - file: minion-config
 
 {% elif role == 'master' %}
 {% for key in keyfiles %}
@@ -28,10 +30,12 @@ minion_service:
     - name: /etc/salt/pki/master/{{ key }}
     - source: salt://files/pki/m2m/{{ key }}
     - makedirs: True
-{% endfor %}
 
-master_service:
+master-service-{{ key }}:
   service.running:
     - name: salt-master
     - enable: True
+    - watch:
+      - file: {{ key }}
+{% endfor %}
 {% endif %}
