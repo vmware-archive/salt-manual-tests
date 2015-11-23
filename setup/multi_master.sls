@@ -1,6 +1,6 @@
 {# example of running this sls file using salt-ssh:  #}
-{# for master: sudo salt-ssh '*M*' state.sls m2m pillar="{'role': 'master'}" #}
-{# for minion: sudo salt-ssh '*min*' state.sls m2m pillar="{'m1': '1.1.1.1', 'm2':'2.2.2.2', 'role': 'minion'}" #}
+{# for master: sudo salt-ssh '*M*' state.sls multi_master pillar="{'role': 'master'}" #}
+{# for minion: sudo salt-ssh '*min*' state.sls multi_master pillar="{'m1': '1.1.1.1', 'm2':'2.2.2.2', 'role': 'minion'}" #}
 {% set master1 = salt['pillar.get']('m1', '')  %}                                                                  
 {% set master2 = salt['pillar.get']('m2', '')  %}
 {% set keyfiles = ['master.pem', 'master.pub'] %}
