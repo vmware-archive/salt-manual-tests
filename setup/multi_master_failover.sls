@@ -1,4 +1,4 @@
-{# example of running this sls file using salt-ssh:  #}                                                                                                                                                                                
+{# test example of running this sls file using salt-ssh:  #}                                                                                                                                                                                
 {# for master: sudo salt-ssh '*M*' state.sls multi_master_failover pillar="{'role': 'master'}" #}                                                                                                                                                        
 {# for minion: sudo salt-ssh '*min*' state.sls multi_master_failover pillar="{'m1': '1.1.1.1', 'm2':'2.2.2.2', 'role': 'minion'}" #}
 {% set master1 = salt['pillar.get']('m1', '')  %}                                                                  
