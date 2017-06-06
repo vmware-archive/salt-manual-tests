@@ -1,21 +1,27 @@
-{% if grains['os'] == 'Windows' %}
-  {% set file_name = 'c:\\\salt\\config_file' %}
-  {% set cfg_name = 'c:\\\salt\\config_dir/main.cfg' %}
-  {% set dir_name = 'c:\\\salt\\config_dir' %}
-{% endif %}
-
-single_config:
+file_managed:
   file.managed:
-    - name: {{ file_name }}
-    - source: salt://tests/files/main.cfg
+    - name: c:/test/test
+    - makedirs: True
+    - contents: |
+        Only a test
 
-recursive_configs:
-  file.recurse:
-    - name: {{ dir_name }}
-    - source: salt://tests/files
-    - include_empty: True
+file_copy:
+  file.copy:
+    - name: c:/test/test1
+    - source: c:/test/test
+    - makedirs: True
 
-comment_main:
+file_comment:
   file.comment:
-    - name: {{ cfg_name }}
-    - regex: '^status'
+    - name: c:/test/test1
+    - regex: '^Only'
+
+file_replace:
+  file.replace:
+    - name: c:/test/test1
+    - pattern: 'test'
+    - repl: 'testing'
+
+file_absent:
+  file.absent:
+    - name: c:/test/test1

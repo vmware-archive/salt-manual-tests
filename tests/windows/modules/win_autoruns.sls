@@ -1,3 +1,3 @@
-autoruns_list:
+autoruns.list:
   module.run:
     - name: autoruns.list
