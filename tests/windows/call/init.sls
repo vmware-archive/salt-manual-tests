@@ -1,12 +1,14 @@
-file_managed:
-  file.managed:
-    - name: c:/test/salt_call
-    - makedirs: True
-    - contents: |
-        test1
-        test2
-        test3
+{% set salt_call = 'c:\\salt\\salt-call.bat'  %}
+{% set replace_file_name = 'c:\\windows\\temp\\salt-call-replace-file.txt'  %}
 
-salt-call:
+create_file:
+  file.managed:
+    - name: {{ replace_file_name }}
+    - contents: |
+        this is a free-
+        form text file.
+
+replace_file:
   cmd.run:
-    - name: 'c:\\salt\\salt-call.bat --local file.replace c:\\test\\salt_call pattern="test" repl="worked"'
+    - name: '{{ salt_call }} --local file.replace {{ replace_file_name }} pattern="form" repl="for-all"'
+    - python_shell: True
