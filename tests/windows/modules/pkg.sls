@@ -5,8 +5,6 @@ pkg_refresh_db:
 pkg_list_pkgs:
   module.run:
     - name: pkg.list_pkgs
-    - require:
-      - module: pkg_refresh_db
 
 pkg_install_firefox:
   module.run:
@@ -27,3 +25,13 @@ pkg_remove_adobereader:
   module.run:
     - name: pkg.remove
     - m_name: adobereader
+
+pkg_install_chrome:
+  module.run:
+    - name: pkg.install
+    - m_name: chrome
+
+pkg_remove_chrome:
+  module.run:
+    - name: pkg.remove
+    - m_name: chrome

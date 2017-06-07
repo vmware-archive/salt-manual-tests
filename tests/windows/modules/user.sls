@@ -58,3 +58,15 @@ group_delete_salt_users:
   module.run:
     - name: group.delete
     - m_name: salt_users
+
+user_chhome:
+  module.run:
+    - name: user.chhome
+    - m_name: salt_user
+    - home: c:/salt
+
+user_chfullname:
+  module.run:
+    - name: user.chfullname
+    - m_name: salt_user
+    - fullname: 'Salt Dude'
