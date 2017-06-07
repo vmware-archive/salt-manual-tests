@@ -14,12 +14,17 @@ start_spooler:
   module.run:
     - name: service.start
     - m_name: Spooler                                                                             
+
+restart_print_spooler:
+  module.run:
+    - name: service.restart
+    - m_name: Spooler
         
 stop_print_spooler:
   module.run:
     - name: service.stop
     - m_name: Spooler
-        
+
 service_get_service_name:
   module.run:
     - name: service.get_service_name
